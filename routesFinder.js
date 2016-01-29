@@ -36,6 +36,22 @@ finder.directRouteBetween = function(from,to){
     return routes;
 };
 
+finder.tellHubs = function(){
+  return bangalore.hubs;
+};
+
+finder.routeDetails = function(route){
+  return bangalore.buses[route];
+};
+
+finder.leastDistanceRoute = function(from,to){
+  var all_Routes = this.directRouteBetween(from,to);
+  var lDR = all_Routes.reduce(function(r1,r2){
+               return finder.routeDetails(r1).length > finder.routeDetails(r2).length ?
+                      r1 : r2;
+  });
+  return {name : lDR , details: finder.routeDetails(lDR)};
+};
 module.exports = finder;
 
 

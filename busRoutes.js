@@ -25,8 +25,8 @@ City.prototype = {
                         this.buses[route].push(station);
                       },
   addHubs : function(){
-              var all_Stations = this.stations;
-             this.hubs = Object.keys(all_Stations).filter(function(station){ return all_Stations[station].connectedRoutes.length >= 10 });
+             var all_Stations = this.stations;
+             this.hubs = Object.keys(all_Stations).filter(function(station){ return all_Stations[station].connectedRoutes.length >= 50 });
            }
 
 };
