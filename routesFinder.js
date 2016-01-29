@@ -1,5 +1,6 @@
 var fs = require('fs');
-var all_routes = fs.readFileSync("./All_Routes_By_Number.txt",'utf8');
+var City = require('./busRoutes');
+var all_routes = fs.readFileSync('./All_Routes_By_Number.txt','utf8');
 var giveRoutes = function(all_routes){
   var routes = {};
   all_routes = all_routes.split('\r\n');
@@ -24,3 +25,17 @@ var giveCityBusRoutes = function(routes){
 };
 
 var bangalore = giveCityBusRoutes(giveRoutes(all_routes));
+var finder = {};
+finder.directRouteBetween = function(from,to){
+  var routes = [];
+  Object.keys(bangalore.buses).forEach(function(bus){
+    if(bangalore.buses[bus].indexOf(from) != -1 && bangalore.buses[bus].indexOf(to) != -1){
+      routes.push(bus);
+    };
+  });
+    return routes;
+};
+
+module.exports = finder;
+
+
