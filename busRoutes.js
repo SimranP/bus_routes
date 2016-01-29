@@ -59,4 +59,4 @@ var giveCityBusRoutes = function(routes){
 };
 
 var bangalore = giveCityBusRoutes(giveRoutes(all_routes));
-module.exports = bangalore;
+module.exports = City;
